@@ -1,5 +1,4 @@
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
@@ -20,12 +19,12 @@ public class CardDeliveryTest {
     public void shouldChooseADate (){
 
         open("http://localhost:9999/");
-        $("[placeholder=\" Город\"]").setValue("Казань");
-        $("[data-test-id=\"date\"] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"]").setValue(generateDate());
-        $("[name=\"name\"]").setValue("Иванов Иван");
-        $("[name=\"phone\"]").setValue("+79879879879");
-        $("[data-test-id=\"agreement\"]").click();
+        $("[placeholder='Город'] input").setValue("Казань");
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
+        $("[data-test-id='date'] input").setValue(generateDate());
+        $("[name='name'] input").setValue("Иванов Иван");
+        $("[name='phone'] input").setValue("+79879879879");
+        $("[data-test-id='agreement']").click();
         $$("button").findBy(Condition.text("Забронировать")).click();
         $(byText("Встреча успешно забронирована на ")).shouldBe(Condition.visible, Duration.ofSeconds(15));
 
